@@ -1,0 +1,35 @@
+<!-- (matSortChange)="sortData($event)" -->
+<div class="container">
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutAlign="center">
+    <div fxFlex="20%">
+      <h1 class="h1-title">Total Count</h1>
+    </div>
+  </div>
+  <!-- <mat-grid-list cols="2" rowHeight="100px">
+            <mat-grid-tile><h1 class="h1-title">View Job</h1></mat-grid-tile>
+            <mat-grid-tile><button mat-raised-button color="primary" (click)="addNew()">Add New</button></mat-grid-tile>
+        </mat-grid-list> -->
+
+  <mat-table [dataSource]="dataSource" matSort>
+    
+    <ng-container matColumnDef="jobCode">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Job Name </mat-header-cell>
+      <mat-cell *matCellDef="let job"> {{job.jobCode}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="jobDesc">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Job Desc </mat-header-cell>
+      <mat-cell *matCellDef="let job"> {{job.jobDesc}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="applyDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Applied Date </mat-header-cell>
+      <mat-cell *matCellDef="let job"> {{job.appliedDate}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="appliedBy">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Applied By </mat-header-cell>
+      <mat-cell *matCellDef="let job"> {{job.appliedBy}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.name}" (click)="highlight(row)"></mat-row>
+  </mat-table>
+</div>

@@ -1,0 +1,45 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav    
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <div *ngIf="login">
+          <!-- <a mat-list-item href="/dashboard">Dashboard</a> -->
+          <a mat-list-item href="/createjob" *ngIf="role == 'role1'">Create Job</a>
+          <a mat-list-item href="/appliedjob" *ngIf="role == 'role1'" >Apply Candidate List</a>
+
+          <a mat-list-item href="/applyjob" *ngIf="role == 'role2'"> Job Openings</a>
+          <a mat-list-item href="/appliedjob" *ngIf="role == 'role2'"> View My Job</a>
+         
+          <a mat-list-item (click)="logout()">Logout</a>
+      </div>
+      <div *ngIf="!login">
+
+          <a mat-list-item href="/login">Login</a>
+      </div>
+     
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>IMSYS</span>
+      <!-- <div *ngIf="login" >Last Login Time</div>
+      <div *ngIf="login">{{firstName}}</div> -->
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

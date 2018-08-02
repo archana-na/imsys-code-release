@@ -1,0 +1,32 @@
+<div class="container">
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutAlign="center">
+      <div fxFlex="20%">
+        <h1 class="h1-title">View Job</h1>
+      </div>
+    </div>
+
+    <mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="apply">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Action </mat-header-cell>
+            <mat-cell *matCellDef="let job"> <button mat-raised-button color="primary">Apply</button> </mat-cell>
+          </ng-container>
+      <ng-container matColumnDef="jobName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Job Name </mat-header-cell>
+        <mat-cell *matCellDef="let job"> {{job.jobName}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="jobDesc">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Job Desc </mat-header-cell>
+        <mat-cell *matCellDef="let job"> {{job.jobDesc}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="skillName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Skill set </mat-header-cell>
+          <mat-cell *matCellDef="let job"> {{job.skillName}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="qualificationName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Qualification </mat-header-cell>
+            <mat-cell *matCellDef="let job"> {{job.qualificationName}} </mat-cell>
+          </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" [ngClass]="{'highlight': selectedRowIndex == row.name}" (click)="highlight(row)"></mat-row>
+    </mat-table>
+  </div>

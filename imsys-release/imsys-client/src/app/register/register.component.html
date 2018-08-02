@@ -1,0 +1,97 @@
+<!-- <a [routerLink]="['/dashboard']">
+    Login</a>
+
+
+<button (click)="login()">Login</button> -->
+<div class="main-div">
+    <mat-card class="example-card">
+        <form class="example-form" [formGroup]="RegForm" (ngSubmit)="register(RegForm.value)">
+            <mat-card-header>
+                <mat-card-title>Register</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+
+                <div class="example-container">
+                    <mat-form-field class="example-full-width">
+                        <input matInput formControlName="firstnameControl" placeholder="Name" [(ngModel)]="regData.firstName" type="text">
+                    </mat-form-field>
+                    <mat-error>
+                        <div *ngIf="!RegForm.get('firstnameControl').valid && RegForm.get('firstnameControl').touched">
+                            <span *ngIf="RegForm.get('firstnameControl').errors.required">
+                                Please enter Name
+                            </span>
+                            <span *ngIf="RegForm.get('firstnameControl').errors.pattern">
+                                Enter Valid Name.Alphabets Only
+                            </span>
+                            <span *ngIf="RegForm.get('firstnameControl').errors.minlength">
+                                Name should be minimum 3 character
+                            </span>
+                        </div>
+                    </mat-error>
+                    <mat-form-field class="example-full-width">
+                        <input matInput formControlName="phoneNoControl" placeholder="Phone No" [(ngModel)]="regData.contactNo" type="number">
+                    </mat-form-field>
+                    <mat-error>
+                        <div *ngIf="!RegForm.get('phoneNoControl').valid && RegForm.get('phoneNoControl').touched">
+                            <span *ngIf="RegForm.get('phoneNoControl').errors.required">
+                                Please enter Phone No
+                            </span>
+                            <span *ngIf="RegForm.get('phoneNoControl').errors.pattern">
+                                Enter Valid Phone No. 10 digit only
+                            </span>
+
+                        </div>
+
+                    </mat-error>
+                    <mat-form-field class="example-full-width">
+                        <input matInput formControlName="emailidControl" placeholder="Email" [(ngModel)]="regData.userid" type="text">
+                    </mat-form-field>
+                    <mat-error>
+
+                        <div *ngIf="!RegForm.get('emailidControl').valid && RegForm.get('emailidControl').touched">
+                           
+                            <span *ngIf="RegForm.get('emailidControl').errors">
+                                Enter Valid Email ID format
+                            </span>
+
+                        </div>
+
+                    </mat-error>
+                    <mat-form-field class="example-full-width">
+                        <input matInput formControlName="passwordControl" placeholder="Password" [(ngModel)]="regData.password" type="password">
+                    </mat-form-field>
+                    <mat-error>
+                        <div *ngIf="!RegForm.get('passwordControl').valid && RegForm.get('passwordControl').touched">
+                            <!-- <span *ngIf="RegForm.get('passwordControl').errors.required">
+                                                                Please enter Email
+                                                            </span> -->
+                            <span *ngIf="RegForm.get('passwordControl').errors">
+                                Enter Valid Password. Min length 5 and Alphanumeric allowed
+                            </span>
+
+                        </div>
+
+                    </mat-error>
+                    <!-- <mat-form-field class="example-full-width"> -->
+                            
+                            <mat-radio-group formControlName="roleControl">
+                                <mat-radio-button *ngFor="let role of roleList" value="{{role.listCode}}">{{role.listValue}}</mat-radio-button>
+                            </mat-radio-group>
+                            <mat-error>
+                                <span *ngIf="!RegForm.get('roleControl').valid && regiForm.get('roleControl').touched">Please select any Role</span>
+                            </mat-error>
+                        <!-- </mat-form-field> -->
+
+                </div>
+
+
+                <!-- <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner> -->
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button [disabled]="!RegForm.valid" color="primary" class="btn-login">Register</button>
+                <button mat-button color="warn" (click)="login()">Login</button>
+                <button mat-button color="warn"></button>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</div>
